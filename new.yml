@@ -11,16 +11,16 @@ spec:
     metadata:
       labels:
         app: traffic-light
-  spec:
-    containers:
-    - name: traffic-light
-      image: ghcr.io/jass2023/traffic-light-control:latest
-      securityContext:
-        privileged: true
-      volumeMounts:
+    spec:
+      containers:
+      - name: traffic-light
+        image: ghcr.io/jass2023/traffic-light-control:latest
+        securityContext:
+          privileged: true
+        volumeMounts:
+        - name: dev-gpiomem
+          mountPath: /dev/gpiomem
+      volumes:
       - name: dev-gpiomem
-        mountPath: /dev/gpiomem
-    volumes:
-    - name: dev-gpiomem
-      hostPath:
-        path: /dev/gpiomem
+        hostPath:
+          path: /dev/gpiomem
